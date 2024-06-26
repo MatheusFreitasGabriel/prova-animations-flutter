@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:prova_animations/home_page.dart';
 
 class BoasvindasPage extends StatefulWidget {
   const BoasvindasPage({super.key});
@@ -31,11 +33,39 @@ class _BoasvindasPageState extends State<BoasvindasPage> {
         width: double.infinity,
         height: double.infinity,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Text(
-              "Seja bem vindo!",
-              style: ,
+            AnimatedOpacity(
+              opacity: _opacity,
+              duration: Duration(seconds: 3),
+              child: Text(
+                "Seja bem vindo!",
+                style: GoogleFonts.poppins(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold
+                )
+                ),
             ),
+            AnimatedOpacity(
+              opacity: _opacity,
+              duration: Duration(seconds: 3),
+              child: ElevatedButton(
+                onPressed: (){
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomePage()));
+                },
+                child: Text(
+                  "Começar",
+                ),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.deepPurple,
+                  foregroundColor: Colors.white,
+                  padding: EdgeInsets.symmetric(vertical: 12, horizontal: 98),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  )
+                ),
+              ),
+            )
           ],
         ),
       ),
